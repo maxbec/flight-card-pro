@@ -1,11 +1,11 @@
-import { LitElement, html, TemplateResult, PropertyValues } from 'lit';
+import { LitElement, html, TemplateResult } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
-import { HomeAssistant, hasConfigOrEntityChanged } from 'custom-card-helpers';
 
-import { FlightradarFlightCardConfig } from './types';
+import { ChangedProps, FlightradarFlightCardConfig, HomeAssistant } from './types';
 import { cardStyles } from './styles';
 import { CARD_NAME, CARD_DESCRIPTION, CARD_VERSION, DEFAULT_CONFIG } from './const';
 import { registerCustomCard } from './utils/register-card';
+import { hasConfigOrEntityChanged } from './utils/has-changed';
 
 console.info(
   `%c ${CARD_NAME.toUpperCase()} %c v${CARD_VERSION} `,
@@ -42,14 +42,13 @@ export class FlightradarFlightCard extends LitElement {
     return 3;
   }
 
-  // protected shouldUpdate(changedProps: PropertyValues): boolean {
-  //   if (!this._config) {
-  //     return false;
-  //   }
+  protected shouldUpdate(changedProps: ChangedProps): boolean {
+    if (!this._config) {
+      return false;
+    }
 
-  //   const result = hasConfigOrEntityChanged(this, changedProps, false);
-  //   return result;
-  // }
+    return hasConfigOrEntityChanged(this, changedProps);
+  }
 
   protected render(): TemplateResult {
     if (!this._config || !this.hass) {
