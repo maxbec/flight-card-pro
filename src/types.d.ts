@@ -1,5 +1,3 @@
-import { LovelaceCardConfig } from 'custom-card-helpers';
-
 export type FlightData = {
   id: string;
   flight_number: string | null;
@@ -53,13 +51,6 @@ export type FlightData = {
   on_ground: number;
   tracked_by_device: string;
 };
-
-export interface FlightradarFlightCardConfig extends LovelaceCardConfig {
-  entity: string;
-  name?: string;
-  show_header?: boolean;
-  show_state?: boolean;
-}
 
 // Home Assistant entity state interface
 export interface FlightEntityState {

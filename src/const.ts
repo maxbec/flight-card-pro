@@ -4,8 +4,8 @@ export const CARD_NAME = 'flightradar-flight-card';
 export const CARD_DESCRIPTION =
   'A custom Home Assistant card for displaying Flightradar flight information';
 
-// Default configuration values
-export const DEFAULT_CONFIG = {
-  show_header: true,
-  show_state: true,
-} as const;
+export type CardConfig = {
+  entity: string;
+};
+
+export const DEFAULT_CONFIG: Partial<CardConfig> = {};

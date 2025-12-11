@@ -1,9 +1,9 @@
 import { LitElement, TemplateResult, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 
-import { CARD_DESCRIPTION, CARD_NAME, CARD_VERSION, DEFAULT_CONFIG } from './const';
+import { CARD_DESCRIPTION, CARD_NAME, CARD_VERSION, CardConfig, DEFAULT_CONFIG } from './const';
 import { cardStyles } from './styles';
-import { ChangedProps, FlightData, FlightradarFlightCardConfig, HomeAssistant } from './types';
+import { ChangedProps, FlightData, HomeAssistant } from './types';
 import { formatRelativeTime } from './utils/date';
 import { hasConfigOrEntityChanged } from './utils/has-changed';
 import { registerCustomCard } from './utils/register-card';
@@ -26,7 +26,7 @@ export class FlightradarFlightCard extends LitElement {
   public hass!: HomeAssistant;
 
   @state()
-  private _config!: FlightradarFlightCardConfig;
+  private _config!: CardConfig;
 
   @state()
   private _flight!: {
@@ -51,7 +51,7 @@ export class FlightradarFlightCard extends LitElement {
 
   static styles = cardStyles;
 
-  public setConfig(config: FlightradarFlightCardConfig): void {
+  public setConfig(config: Partial<CardConfig>): void {
     if (!config.entity) {
       throw new Error('Please define an entity');
     }
@@ -59,6 +59,7 @@ export class FlightradarFlightCard extends LitElement {
     this._config = {
       ...DEFAULT_CONFIG,
       ...config,
+      entity: config.entity,
     };
   }
 
