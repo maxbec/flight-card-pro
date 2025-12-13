@@ -30,7 +30,7 @@ export const cardStyles = css`
 
   .main-content {
     display: grid;
-    grid-template-columns: minmax(0, 1.5fr) auto;
+    grid-template-columns: 1.5fr 0.5fr;
     gap: var(--ha-space-4);
     align-items: center;
   }
@@ -128,7 +128,7 @@ export const cardStyles = css`
 
   .main-content-right img.aircraft-photo {
     border-radius: 8px;
-    width: 120px;
+    max-width: 120px;
     height: auto;
   }
 
