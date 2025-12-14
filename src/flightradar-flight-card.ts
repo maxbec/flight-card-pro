@@ -39,15 +39,23 @@ export class FlightradarFlightCard extends LitElement {
     flightNumber: string | null;
     callsign: string | null;
     airlineLabel: string;
+    /** Origin airport */
     origin: string;
+    /** Destination airport */
     destination: string;
+    /** Distance to tracked area in kilometers */
     distance: number;
+    /** Altitude in feet */
     altitude: number;
+    /** Ground speed in knots */
     groundSpeed: number;
+    /** Whether the flight is currently in the air */
     isLive: boolean;
     /** Flight duration in seconds */
     flightTime?: number;
+    /** Departure time in seconds */
     departureTime?: number;
+    /** Arrival time in seconds */
     arrivalTime?: number;
   };
 
