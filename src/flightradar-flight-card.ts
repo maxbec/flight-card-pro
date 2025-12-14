@@ -134,7 +134,7 @@ export class FlightradarFlightCard extends LitElement {
   }
 
   protected renderFlightTitle() {
-    if (!this._flight.flightNumber) {
+    if (!this._flight.flightNumber && !this._flight.callsign) {
       return html`<p>${this._flight.callsign}</p>`;
     }
 
