@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
@@ -36,6 +37,7 @@ const plugins = [
   }),
   resolve({ browser: true }),
   commonjs(),
+  json(),
   typescript({
     tsconfig: './tsconfig.json',
     sourceMap: dev,

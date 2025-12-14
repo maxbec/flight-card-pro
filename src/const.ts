@@ -1,4 +1,6 @@
-export const CARD_VERSION = '0.0.0';
+import { version } from '../package.json';
+
+export const CARD_VERSION = version;
 
 export const CARD_NAME = 'flightradar-flight-card';
 export const CARD_DESCRIPTION =
