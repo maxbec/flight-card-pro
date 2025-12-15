@@ -73,5 +73,6 @@ export const areaFlightSchema = v.object({
   distance: v.number(),
   closest_distance: v.optional(v.number()),
   on_ground: v.nullable(v.number()),
-  tracked_by_device: v.string(),
+  /** Additional tracked doesn't have this property */
+  tracked_by_device: v.optional(v.string()),
 });
