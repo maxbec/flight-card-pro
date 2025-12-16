@@ -33,8 +33,6 @@ export type AreaFlight = {
   groundSpeed: number;
   /** Whether the flight is currently in the air */
   isLive: boolean;
-  /** Flight duration in seconds */
-  flightTime?: number;
   /** Departure time in seconds */
   departureTime?: number;
   /** Arrival time in seconds */

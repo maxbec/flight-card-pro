@@ -105,11 +105,6 @@ export class FlightradarFlightCard extends LitElement {
         groundSpeed: f.ground_speed,
         departureTime: f.time_real_departure ?? undefined,
         arrivalTime: f.time_estimated_arrival ?? f.time_scheduled_arrival ?? undefined,
-        get flightTime() {
-          if (!this.departureTime || !this.arrivalTime) return;
-
-          return this.arrivalTime - this.departureTime;
-        },
         get isLive() {
           if (!this.arrivalTime) return false;
 
