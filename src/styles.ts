@@ -146,6 +146,7 @@ export const cardStyles = css`
   }
 
   .flight-progress {
+    display: block;
     margin-top: var(--ha-space-4);
   }
 `;

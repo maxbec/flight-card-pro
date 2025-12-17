@@ -150,14 +150,13 @@ export class FlightradarFlightCard extends LitElement {
           </div>
 
           ${this.flight.isLive && this.flight.arrivalTime
-            ? html` <div class="flight-progress">
-                <flight-progress-bar
-                  .hass=${this.hass}
-                  .departureTime=${this.flight.departureTime}
-                  .arrivalTime=${this.flight.arrivalTime}
-                  .destination=${this.flight.destination}
-                />
-              </div>`
+            ? html` <flight-progress-bar
+                .hass=${this.hass}
+                .departureTime=${this.flight.departureTime}
+                .arrivalTime=${this.flight.arrivalTime}
+                .destination=${this.flight.destination}
+                class="flight-progress"
+              />`
             : nothing}
         </div>
       </ha-card>
