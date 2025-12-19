@@ -1,7 +1,25 @@
-export function formatRelativeTime(date1: Date, date2: Date, language?: string): string {
-  const formatter = new Intl.RelativeTimeFormat(language, { style: 'short' });
+export function formatTimeLeft(seconds: number, locale: string): string {
+  const totalSeconds = Math.max(0, Math.floor(seconds));
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
 
-  const diff = Math.abs(date1.getTime() - date2.getTime());
+  if (hours > 0) {
+    const h = new Intl.NumberFormat(locale, {
+      style: 'unit',
+      unit: 'hour',
+      unitDisplay: 'narrow',
+    }).format(hours);
+    const m = new Intl.NumberFormat(locale, {
+      style: 'unit',
+      unit: 'minute',
+      unitDisplay: 'narrow',
+    }).format(minutes);
+    return `${h} ${m}`;
+  }
 
-  return formatter.format(Math.round(diff / 1000), 'seconds');
+  return new Intl.NumberFormat(locale, {
+    style: 'unit',
+    unit: 'minute',
+    unitDisplay: 'short',
+  }).format(minutes);
 }
