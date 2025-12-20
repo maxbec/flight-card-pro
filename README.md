@@ -2,7 +2,7 @@
 
 A custom Home Assistant card for displaying Flightradar flight information.
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg)](https://github.com/hacs/integration)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg)](https://github.com/hacs/integration)
 [![GitHub Release](https://img.shields.io/github/release/plckr/flightradar-flight-card.svg)](https://github.com/plckr/flightradar-flight-card/releases)
 
 ![Area card example](./card-examples/area-card.png)
@@ -11,18 +11,18 @@ A custom Home Assistant card for displaying Flightradar flight information.
 
 ## Prerequisites
 
-This card requires the [Flightradar24 integration](https://www.home-assistant.io/integrations/flightradar24/) to be installed and configured in Home Assistant.
+This card requires the [Flightradar24 integration](https://github.com/AlexandrErohin/home-assistant-flightradar24) to be installed and configured in Home Assistant.
 
 ## Installation
 
 ### HACS (Recommended)
 
-1. Open HACS in your Home Assistant instance
-2. Click on "Frontend"
-3. Click the three dots in the top right corner and select "Custom repositories"
-4. Add this repository URL and select "Lovelace" as the category
-5. Click "Install"
-6. Refresh your browser
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=plckr&repository=flightradar-flight-card&category=plugin)
+
+1. Open [HACS](https://www.hacs.xyz/) in your Home Assistant instance
+2. Search for "Flightradar Flight Card"
+3. Click "Install"
+4. Refresh your browser
 
 ### Manual Installation
 
@@ -63,6 +63,23 @@ entities:
     title: Flights Nearby
   - entity_id: sensor.flightradar24_most_tracked
     title: Most Tracked
+```
+
+## Use case example
+
+You can track the history of flights that flew by your home using [this method](https://github.com/AlexandrErohin/home-assistant-flightradar24?tab=readme-ov-file#last-flights-history-sensor).
+
+With that new sensor, you can combine the `sensor.flightradar24_current_in_area` that comes by default with the integration, and then with the new sensor just created. That will make the card to display the currently in area first, and if no flight is around your home, it'll show the last flight.
+
+Yaml example:
+
+```yaml
+type: custom:flightradar-flight-card
+entities:
+  - entity_id: sensor.flightradar24_current_in_area
+    title: Flights Nearby
+  - entity_id: sensor.flightradar24_area_history
+    title: Last Flight
 ```
 
 ## Credits
