@@ -51,6 +51,7 @@ const plugins = [
   json(),
   typescript({
     tsconfig: './tsconfig.json',
+    declaration: false,
     sourceMap: dev,
     inlineSources: dev,
   }),
