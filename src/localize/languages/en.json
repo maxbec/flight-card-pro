@@ -21,5 +21,14 @@
   "flight": {
     "live": "Live",
     "time_remaining": "Remaining {time} to reach {destination}"
+  },
+
+  "editor": {
+    "optional_field": "Optional",
+    "title": "Title",
+    "remove_entity_button": "Remove",
+    "add_entity_button": "Add Entity",
+    "usage_description": "Adding more entities will be used as fallback in case flights were not found on previous entities.",
+    "more_info_link": "More info on"
   }
 }

@@ -2,6 +2,7 @@ import { LitElement, css, html, nothing } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 
 import { CARD_NAME, CardConfig, GITHUB_REPOSITORY, GITHUB_REPOSITORY_URL } from './const';
+import { KeyString, localize } from './localize/localize';
 import { HomeAssistant } from './types/homeassistant';
 
 export const EDITOR_NAME = `${CARD_NAME}-editor`;
@@ -63,6 +64,10 @@ export class FlightradarFlightCardEditor extends LitElement {
       return nothing;
     }
 
+    const t = (key: KeyString, params?: Record<string, string>) => {
+      return localize(key, this.hass.locale.language, params);
+    };
+
     const entities = this._config.entities || [];
 
     return html`
@@ -94,7 +99,7 @@ export class FlightradarFlightCardEditor extends LitElement {
                       }}
                     ></ha-selector>
                     <ha-textfield
-                      .label=${'Title (optional)'}
+                      .label=${`${t('editor.title')} (${t('editor.optional_field')})`}
                       .value=${entity.title || ''}
                       @input=${(ev: Event) => {
                         this._titleChanged(index, (ev.target as HTMLInputElement).value);
@@ -112,7 +117,7 @@ export class FlightradarFlightCardEditor extends LitElement {
                           @click=${() => this._removeEntity(index)}
                         >
                           <ha-icon icon="mdi:delete" slot="start"></ha-icon>
-                          Remove
+                          ${t('editor.remove_entity_button')}
                         </ha-button>
                       `
                     : nothing}
@@ -125,15 +130,12 @@ export class FlightradarFlightCardEditor extends LitElement {
 
       <ha-button size="small" appearance="filled" class="add-entity" @click=${this._addEntity}>
         <ha-icon icon="mdi:playlist-plus" slot="start"></ha-icon>
-        Add Entity
+        ${t('editor.add_entity_button')}
       </ha-button>
 
+      <p>${t('editor.usage_description')}</p>
       <p>
-        Adding more entities will be used as fallback in case flights were not found on previous
-        entities.
-      </p>
-      <p>
-        More info on:
+        ${t('editor.more_info_link')}:
         <a href=${GITHUB_REPOSITORY_URL} target="_blank">${GITHUB_REPOSITORY}</a>
       </p>
     `;
