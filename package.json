@@ -37,7 +37,6 @@
     "valibot": "^1.2.0"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "^10.0.4",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
