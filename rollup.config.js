@@ -13,16 +13,17 @@ import serve from 'rollup-plugin-serve';
 
 const dev = !!process.env.ROLLUP_WATCH;
 
+const outputFile = 'dist/flightradar-flight-card.js';
+
 const lastCommitHash = fs.readFileSync('.git/refs/heads/main', 'utf8').trim();
 const ghCommitRepositoryUrl = `https://raw.githubusercontent.com/plckr/flightradar-flight-card/${lastCommitHash}`;
 
 export default defineConfig(() => ({
   input: 'src/index.ts',
   output: {
-    file: 'dist/flightradar-flight-card.js',
+    file: outputFile,
     format: 'es',
     inlineDynamicImports: true,
-    sourcemap: dev,
   },
   plugins,
   watch: {
@@ -49,17 +50,16 @@ const plugins = [
   resolve({ browser: true }),
   commonjs(),
   json(),
-  typescript({
-    tsconfig: './tsconfig.json',
-    declaration: false,
-    sourceMap: dev,
-    inlineSources: dev,
-  }),
+  typescript(),
+  serveOrTerse(),
 ];
 
-if (dev) {
-  plugins.push(
-    serve({
+/**
+ * @returns {import('rollup').Plugin}
+ */
+function serveOrTerse() {
+  if (dev) {
+    return serve({
       contentBase: ['./dist', './public'],
       host: '0.0.0.0',
       port: 4000,
@@ -67,14 +67,30 @@ if (dev) {
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
-    })
-  );
-} else {
-  plugins.push(
+    });
+  }
+
+  return [
     terser({
       format: {
         comments: false,
       },
-    })
-  );
+    }),
+    outputBundleSize(),
+  ];
+}
+
+/**
+ * @returns {import('rollup').Plugin}
+ */
+function outputBundleSize() {
+  return {
+    name: 'bundle-size',
+    closeBundle() {
+      const file = outputFile;
+      const size = fs.statSync(file).size;
+      const kb = (size / 1024).toFixed(2);
+      console.log(`\n📦 Bundle size: ${kb} KB`);
+    },
+  };
 }

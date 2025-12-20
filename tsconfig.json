@@ -3,7 +3,7 @@
     "target": "es2021",
     "module": "esnext",
     "lib": ["es2021", "dom", "dom.iterable"],
-    "declaration": true,
+    "declaration": false,
     "strict": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -22,7 +22,6 @@
     "skipLibCheck": true,
     "outDir": "dist",
     "rootDir": "./src",
-    "sourceMap": true,
     "resolveJsonModule": true
   },
   "include": ["src/**/*.ts"],
