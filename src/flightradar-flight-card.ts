@@ -1,11 +1,11 @@
-import { LitElement, html } from 'lit';
+import { LitElement, css, html } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
 import * as v from 'valibot';
 
 import { CARD_NAME, CardConfig, DEFAULT_CONFIG } from './const';
 import { AreaFlight } from './flight-area-card';
 import { KeyString, localize } from './localize/localize';
-import { cardStyles, resetStyles } from './styles';
+import { resetStyles } from './styles';
 import { ChangedProps, HomeAssistant } from './types/homeassistant';
 import { computeAirlineIcao, getAirlineName } from './utils/airline-icao';
 import { hasConfigChanged, hasEntityChanged } from './utils/has-changed';
@@ -20,7 +20,17 @@ export class FlightradarFlightCard extends LitElement {
   @state()
   private _config!: CardConfig;
 
-  static styles = [resetStyles, cardStyles];
+  static styles = [
+    resetStyles,
+    css`
+      ha-card {
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+    `,
+  ];
 
   public setConfig(config: Partial<CardConfig>): void {
     if (!config.entities || config.entities.length === 0) {
@@ -169,6 +179,9 @@ export class FlightradarFlightCard extends LitElement {
       return html`<flight-area-card .hass=${this.hass} .flight=${flight}></flight-area-card>`;
     }
 
-    return html`<hui-error-card>Unhandled flight type</hui-error-card>`;
+    return html`<ha-card>
+      <ha-icon icon="mdi:airplane"></ha-icon>
+      <span>${t('no_flights')}</span>
+    </ha-card>`;
   }
 }
