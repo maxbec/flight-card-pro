@@ -148,7 +148,7 @@ export class FlightradarFlightCard extends LitElement {
                 ${isValidAirlineLogo(this.flight.airlineIcao)
                   ? html`
                       <img
-                        src="http://localhost:4000/flightaware_logos/${this.flight.airlineIcao}.png"
+                        src="__LOGOS_URL__/${this.flight.airlineIcao}.png"
                         alt="Airline ICAO Logo '${this.flight.airlineIcao}'"
                       />
                     `
