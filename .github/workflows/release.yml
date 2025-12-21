@@ -38,9 +38,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
-
       - name: Create Github Release
         run: npm run release -- --ci ${{ inputs.version }}
         env:
