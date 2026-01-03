@@ -160,7 +160,13 @@ export class FlightradarFlightCardEditor extends LitElement {
   }
 
   private _addEntity(): void {
-    const entities = [...this._config.entities, { entity_id: '' }];
+    const defaultEntityId = 'sensor.flightradar24_most_tracked';
+    const defaultEntityExists = this.hass.states[defaultEntityId] !== undefined;
+
+    const entities = [
+      ...(this._config.entities ?? []),
+      { entity_id: defaultEntityExists ? defaultEntityId : '' },
+    ];
     this._updateConfig({ ...this._config, entities });
   }
 

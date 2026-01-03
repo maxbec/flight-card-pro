@@ -38,6 +38,10 @@ export class FlightradarFlightCard extends LitElement {
       throw new Error('Please define at least one entity');
     }
 
+    if (!config.entities.every((entity) => entity.entity_id)) {
+      throw new Error('All entities must have an entity defined');
+    }
+
     this._config = {
       ...DEFAULT_CONFIG,
       ...config,
@@ -50,15 +54,19 @@ export class FlightradarFlightCard extends LitElement {
   }
 
   public static getStubConfig(
-    _hass: HomeAssistant,
+    hass: HomeAssistant,
     _entities: string[],
     _entitiesFallback: string[]
   ): CardConfig {
+    const defaultEntities = [
+      { entity_id: 'sensor.flightradar24_current_in_area', title: 'Currently in area' },
+      { entity_id: 'sensor.flightradar24_most_tracked' },
+    ];
+
     return {
-      entities: [
-        { entity_id: 'sensor.flightradar24_current_in_area', title: 'Currently in area' },
-        { entity_id: 'sensor.flightradar24_most_tracked' },
-      ],
+      entities: defaultEntities.filter((entity) => {
+        return hass.states[entity.entity_id] !== undefined;
+      }),
     };
   }
 
