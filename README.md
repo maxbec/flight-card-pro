@@ -6,13 +6,13 @@ A custom Home Assistant card for displaying Flightradar flight information.
 [![GitHub Release](https://img.shields.io/github/release/plckr/flightradar-flight-card.svg)](https://github.com/plckr/flightradar-flight-card/releases)
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./card-examples/area-card-dark.png">
-  <img alt="Area card example" src="./card-examples/area-card-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="card-examples/area-card-dark.png">
+  <img alt="Area card example" src="card-examples/area-card-light.png">
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./card-examples/tracked-card-dark.png">
-  <img alt="Area card example" src="./card-examples/tracked-card-light.png">
+  <source media="(prefers-color-scheme: dark)" srcset="card-examples/tracked-card-dark.png">
+  <img alt="Area card example" src="card-examples/tracked-card-light.png">
 </picture>
 
 ## Prerequisites
