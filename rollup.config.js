@@ -13,10 +13,10 @@ import serve from 'rollup-plugin-serve';
 
 const dev = !!process.env.ROLLUP_WATCH;
 
-const outputFile = 'dist/flightradar-flight-card.js';
+const outputFile = 'dist/flight-card-pro.js';
 
 const lastCommitHash = fs.readFileSync('.git/refs/heads/main', 'utf8').trim();
-const ghCommitRepositoryUrl = `https://raw.githubusercontent.com/plckr/flightradar-flight-card/${lastCommitHash}`;
+const ghCommitRepositoryUrl = `https://raw.githubusercontent.com/plckr/flight-card-pro/${lastCommitHash}`;
 
 export default defineConfig(() => ({
   input: 'src/index.ts',

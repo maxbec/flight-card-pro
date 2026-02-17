@@ -11,9 +11,9 @@ import {
 
 export const CARD_VERSION = version;
 
-export const CARD_NAME = 'flightradar-flight-card';
+export const CARD_NAME = 'flight-card-pro';
 export const CARD_DESCRIPTION =
-  'A custom Home Assistant card for displaying Flightradar flight information';
+  'A custom Home Assistant card for displaying flight information';
 
 export const DEFAULT_CONFIG = {
   carousel: {

@@ -8,7 +8,7 @@
     "release": true,
     "releaseName": "v${version}",
     "autoGenerate": true,
-    "assets": ["dist/flightradar-flight-card.js"],
+    "assets": ["dist/flight-card-pro.js"],
     "draft": true
   },
   "npm": {

@@ -23,7 +23,7 @@ export interface FlightEntityState {
 
 export type ChangedProps = PropertyValues<{
   hass: HomeAssistant;
-  _config: FlightradarFlightCardConfig;
+  _config: import('../const').CardConfig;
 }>;
 
 // Grabbed from https://github.com/home-assistant/frontend/blob/dev/src/types.ts

@@ -1,8 +1,8 @@
 {
-  "name": "flightradar-flight-card",
+  "name": "flight-card-pro",
   "version": "1.9.0",
-  "description": "A custom Home Assistant card for displaying Flightradar flight information",
-  "main": "dist/flightradar-flight-card.js",
+  "description": "A custom Home Assistant card for displaying flight information",
+  "main": "dist/flight-card-pro.js",
   "type": "module",
   "scripts": {
     "build": "rollup -c",
@@ -32,7 +32,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/plckr/flightradar-flight-card"
+    "url": "https://github.com/plckr/flight-card-pro"
   },
   "dependencies": {
     "embla-carousel": "^8.6.0",

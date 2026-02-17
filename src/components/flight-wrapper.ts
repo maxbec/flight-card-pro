@@ -12,7 +12,7 @@ export class FlightWrapper extends LitElement {
     resetStyles,
     css`
       ha-card {
-        padding: var(--ha-space-4);
+        padding: 12px;
         color: var(--flight-card-primary-color);
         min-height: 100%;
       }
@@ -26,14 +26,14 @@ export class FlightWrapper extends LitElement {
       }
 
       .header .title {
-        font-size: var(--ha-font-size-s);
+        font-size: 11px;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        margin-bottom: var(--ha-space-3);
+        margin-bottom: 8px;
       }
 
       .header ::slotted(*) {
-        margin-bottom: var(--ha-space-3);
+        margin-bottom: 8px;
       }
     `,
   ];

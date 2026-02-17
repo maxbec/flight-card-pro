@@ -46,6 +46,10 @@ export type FlightData = {
   departureTime?: number;
   /** Arrival time in seconds */
   arrivalTime?: number;
+  /** Delay in minutes, compared with scheduled */
+  departureDelayMinutes?: number;
+  /** Delay in minutes, compared with scheduled */
+  arrivalDelayMinutes?: number;
 };
 
 export type AreaCardOptions = {
@@ -61,7 +65,7 @@ export type AreaCardOptions = {
 };
 
 @customElement('flight-area-card')
-export class FlightradarFlightCard extends LitElement {
+export class FlightAreaCard extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant;
 
@@ -148,6 +152,25 @@ export class FlightradarFlightCard extends LitElement {
       return [];
     });
 
+    const delayInfos = (
+      [
+        [t('departure_delay'), this.flight.departureDelayMinutes],
+        [t('arrival_delay'), this.flight.arrivalDelayMinutes],
+      ] satisfies Array<[string, number | undefined]>
+    ).flatMap(([label, value]) => {
+      if (!defined(value)) return [];
+
+      if (Math.abs(value) <= 1) {
+        return { label, value: t('delay_on_time'), status: 'on-time' as const };
+      }
+
+      if (value < 0) {
+        return { label, value: `${Math.abs(value)}m ${t('delay_early')}`, status: 'early' as const };
+      }
+
+      return { label, value: `+${value}m`, status: 'late' as const };
+    });
+
     return html`
       <div class="main-content">
         <div class="main-content-left">
@@ -189,6 +212,20 @@ export class FlightradarFlightCard extends LitElement {
                       <div>
                         <p class="label">${label}</p>
                         <p class="value">${value}</p>
+                      </div>
+                    `
+                  )}
+                </div>
+              `
+            : nothing}
+          ${delayInfos.length
+            ? html`
+                <div class="flight-delay-container">
+                  ${delayInfos.map(
+                    ({ label, value, status }) => html`
+                      <div class="flight-delay-pill ${status}">
+                        <span class="flight-delay-label">${label}</span>
+                        <span class="flight-delay-value">${value}</span>
                       </div>
                     `
                   )}
@@ -241,6 +278,6 @@ export class FlightradarFlightCard extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'flight-area-card': FlightradarFlightCard;
+    'flight-area-card': FlightAreaCard;
   }
 }

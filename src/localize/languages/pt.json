@@ -4,6 +4,10 @@
   "altitude": "Altitude",
   "ground_speed": "Velocidade de solo",
   "distance": "Distância",
+  "departure_delay": "Atraso saída",
+  "arrival_delay": "Atraso chegada",
+  "delay_on_time": "No horário",
+  "delay_early": "Antecipado",
 
   "airline": {
     "private": "Aeronave privada",

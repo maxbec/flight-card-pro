@@ -1,4 +1,4 @@
-title: Flightradar Flight Card Dev
+title: Flight Card Pro Dev
 views:
   - title: Card Testing
     path: testing
@@ -6,7 +6,7 @@ views:
     cards:
       - type: markdown
         content: |
-          # Flightradar Flight Card Testing
+          # Flight Card Pro Testing
           Use the controls below to simulate different flight states and test the card.
 
       - type: tile
@@ -16,5 +16,5 @@ views:
         features:
           - type: select-options
 
-      - type: custom:flightradar-flight-card
+      - type: custom:flight-card-pro
         entity: sensor.payload

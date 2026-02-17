@@ -28,13 +28,13 @@ export const cardStyles = css`
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: var(--ha-space-4);
+    gap: var(--ha-space-3);
   }
 
   .main-content-left {
     flex-basis: 1.5fr;
-    font-size: 26px;
-    line-height: 1.15;
+    font-size: 22px;
+    line-height: 1.1;
     font-weight: var(--ha-font-weight-bold, 600);
     color: var(--flight-card-primary-color);
   }
@@ -46,7 +46,7 @@ export const cardStyles = css`
   }
 
   .callsign-info > p {
-    font-size: 15px;
+    font-size: 13px;
     color: var(--flight-card-secondary-color);
   }
 
@@ -73,30 +73,59 @@ export const cardStyles = css`
     display: flex;
     align-items: center;
     gap: 4px;
-    margin-top: 8px;
-    font-size: 17px;
+    margin-top: 6px;
+    font-size: 15px;
     opacity: 0.9;
     --mdc-icon-size: 14px;
   }
 
   .flight-speed-info-container {
-    margin-top: 12px;
+    margin-top: 8px;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 24px;
-    row-gap: 6px;
+    column-gap: 20px;
+    row-gap: 4px;
   }
 
   .flight-speed-info-container .label {
-    font-size: var(--ha-font-size-xs, 10px);
+    font-size: 9px;
     color: var(--flight-card-secondary-color);
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
 
   .flight-speed-info-container .value {
-    font-size: var(--ha-font-size-xl, 20px);
+    font-size: 18px;
     font-weight: var(--ha-font-weight-bold, 600);
+  }
+
+  .flight-delay-container {
+    margin-top: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .flight-delay-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--flight-card-secondary-color);
+  }
+
+  .flight-delay-pill.late {
+    background: var(--flight-card-accent-color-light);
+    color: white;
+  }
+
+  .flight-delay-pill .flight-delay-label {
+    opacity: 0.8;
   }
 
   .main-content-right {
@@ -116,7 +145,7 @@ export const cardStyles = css`
     display: flex;
     align-items: center;
     gap: 8px;
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
   .main-content-right .airline-container img {
@@ -132,11 +161,11 @@ export const cardStyles = css`
   }
 
   .main-content-right .aircraft-photo {
-    border-radius: 8px;
-    max-width: 120px;
+    border-radius: 6px;
+    max-width: 104px;
     height: auto;
     color: var(--flight-card-secondary-color);
-    --mdc-icon-size: 60px;
+    --mdc-icon-size: 52px;
   }
 
   .main-content-right .aircraft-model {
@@ -146,6 +175,6 @@ export const cardStyles = css`
 
   .flight-progress {
     display: block;
-    margin-top: var(--ha-space-4);
+    margin-top: var(--ha-space-3);
   }
 `;

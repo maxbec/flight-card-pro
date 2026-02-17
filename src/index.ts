@@ -1,4 +1,4 @@
-import './components/flightradar-flight-card';
+import './components/flight-card-pro';
 
 import { CARD_DESCRIPTION, CARD_NAME, CARD_VERSION, GITHUB_REPOSITORY_URL } from './const';
 import { registerCustomCard } from './utils/register-card';
@@ -11,7 +11,7 @@ console.info(
 
 registerCustomCard({
   type: CARD_NAME,
-  name: 'Flightradar Flight Card',
+  name: 'Flight Card Pro',
   description: CARD_DESCRIPTION,
   documentationURL: GITHUB_REPOSITORY_URL,
   preview: true,

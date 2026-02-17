@@ -15,7 +15,7 @@ import { DEFAULT_UNITS, UnitOptions } from '../utils/units';
 export const EDITOR_NAME = `${CARD_NAME}-editor`;
 
 @customElement(EDITOR_NAME)
-export class FlightradarFlightCardEditor extends LitElement {
+export class FlightCardProEditor extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant;
 

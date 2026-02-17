@@ -10,7 +10,7 @@ homeassistant:
 # Enable frontend
 frontend:
   extra_module_url:
-    - http://localhost:4000/flightradar-flight-card.js
+    - http://localhost:4000/flight-card-pro.js
 
 lovelace:
   mode: storage

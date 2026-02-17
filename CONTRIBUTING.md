@@ -14,8 +14,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ```bash
 # Clone the repository
-git clone https://github.com/plckr/flightradar-flight-card.git
-cd flightradar-flight-card
+git clone https://github.com/plckr/flight-card-pro.git
+cd flight-card-pro
 
 # Install dependencies
 npm install
@@ -54,7 +54,7 @@ There are a couple of scripts available, feel free to look at the scripts sectio
 If you prefer to test in your own Home Assistant instance:
 
 1. Build the card: `npm run build`
-2. Copy `dist/flightradar-flight-card.js` to your Home Assistant `config/www` folder
+2. Copy `dist/flight-card-pro.js` to your Home Assistant `config/www` folder
 3. Add the resource in Home Assistant (see Manual Installation in README)
 4. Add the card to a dashboard
 

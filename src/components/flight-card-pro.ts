@@ -16,10 +16,10 @@ import { FRAreaFlight, FRMostTrackedFlight, parseFlight } from '../utils/schemas
 import { parseAirlineLogoUrl } from '../utils/templating/airline-logo';
 import { defined } from '../utils/type-guards';
 import { AreaCardOptions, FlightData } from './flight-area-card';
-import { EDITOR_NAME } from './flightradar-flight-card-editor';
+import { EDITOR_NAME } from './flight-card-pro-editor';
 
 @customElement(CARD_NAME)
-export class FlightradarFlightCard extends LitElement {
+export class FlightCardPro extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant;
 
@@ -67,7 +67,7 @@ export class FlightradarFlightCard extends LitElement {
   }
 
   public static async getConfigElement() {
-    await import('./flightradar-flight-card-editor');
+    await import('./flight-card-pro-editor');
     return document.createElement(EDITOR_NAME);
   }
 
@@ -219,6 +219,14 @@ function getFlightCardData(
   switch (flight._type) {
     case 'area': {
       const distance = flight.closest_distance ?? flight.distance;
+      const departureDelayMinutes = computeDelayMinutes(
+        flight.time_scheduled_departure,
+        flight.time_real_departure ?? flight.time_estimated_departure
+      );
+      const arrivalDelayMinutes = computeDelayMinutes(
+        flight.time_scheduled_arrival,
+        flight.time_real_arrival ?? flight.time_estimated_arrival
+      );
 
       return {
         id: flight.id,
@@ -250,6 +258,8 @@ function getFlightCardData(
         distance,
         altitude: flight.altitude,
         groundSpeed: flight.ground_speed,
+        departureDelayMinutes,
+        arrivalDelayMinutes,
         departureTime:
           flight.time_real_departure ??
           flight.time_estimated_departure ??
@@ -288,4 +298,13 @@ function getFlightCardData(
       };
     }
   }
+}
+
+function computeDelayMinutes(
+  scheduled: number | null | undefined,
+  actual: number | null | undefined
+): number | undefined {
+  if (!scheduled || !actual) return undefined;
+
+  return Math.round((actual - scheduled) / 60);
 }

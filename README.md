@@ -1,19 +1,19 @@
-# Flightradar Flight Card
+# Flight Card Pro
 
-A custom Home Assistant card for displaying Flightradar flight information.
+A custom Home Assistant card for displaying flight information.
 
-[![GitHub Release](https://img.shields.io/github/release/plckr/flightradar-flight-card.svg)](https://github.com/plckr/flightradar-flight-card/releases)
+[![GitHub Release](https://img.shields.io/github/release/plckr/flight-card-pro.svg)](https://github.com/plckr/flight-card-pro/releases)
 [![Community Forum](https://img.shields.io/static/v1.svg?label=Community&message=Forum&color=41bdf5&logo=HomeAssistant&logoColor=white)](https://community.home-assistant.io/t/flightradar24-flight-card/972609)
 [![HACS](https://img.shields.io/badge/HACS-Default-orange.svg?logo=HomeAssistantCommunityStore&logoColor=white)](https://github.com/hacs/integration)
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/plckr/flightradar-flight-card/refs/heads/main/card-examples/area-card-dark.png">
-  <img alt="Area card example" src="https://raw.githubusercontent.com/plckr/flightradar-flight-card/refs/heads/main/card-examples/area-card-light.png" width="60%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/plckr/flight-card-pro/refs/heads/main/card-examples/area-card-dark.png">
+  <img alt="Area card example" src="https://raw.githubusercontent.com/plckr/flight-card-pro/refs/heads/main/card-examples/area-card-light.png" width="60%">
 </picture>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/plckr/flightradar-flight-card/refs/heads/main/card-examples/tracked-card-dark.png">
-  <img alt="Area card example" src="https://raw.githubusercontent.com/plckr/flightradar-flight-card/refs/heads/main/card-examples/tracked-card-light.png" width="60%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/plckr/flight-card-pro/refs/heads/main/card-examples/tracked-card-dark.png">
+  <img alt="Area card example" src="https://raw.githubusercontent.com/plckr/flight-card-pro/refs/heads/main/card-examples/tracked-card-light.png" width="60%">
 </picture>
 
 ## Prerequisites
@@ -24,21 +24,21 @@ This card requires the [Flightradar24 integration](https://github.com/AlexandrEr
 
 ### HACS (Recommended)
 
-[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=plckr&repository=flightradar-flight-card&category=plugin)
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=plckr&repository=flight-card-pro&category=plugin)
 
 1. Open [HACS](https://www.hacs.xyz/) in your Home Assistant instance
-2. Search for "Flightradar Flight Card"
+2. Search for "Flight Card Pro"
 3. Click "Install"
 4. Refresh your browser
 
 ### Manual Installation
 
-1. Download `flightradar-flight-card.js` from the [latest release](https://github.com/plckr/flightradar-flight-card/releases/latest)
+1. Download `flight-card-pro.js` from the [latest release](https://github.com/plckr/flight-card-pro/releases/latest)
 2. Copy it to your `config/www` folder
 3. Add the resource in Home Assistant:
    - Go to **Settings** → **Dashboards** → **Resources**
    - Click **Add Resource**
-   - URL: `/local/flightradar-flight-card.js`
+   - URL: `/local/flight-card-pro.js`
    - Resource Type: JavaScript Module
 
 ## Usage
@@ -46,7 +46,7 @@ This card requires the [Flightradar24 integration](https://github.com/AlexandrEr
 Add the card to your dashboard:
 
 ```yaml
-type: custom:flightradar-flight-card
+type: custom:flight-card-pro
 entities:
   - entity_id: sensor.flightradar24_current_in_area
 ```
@@ -123,7 +123,7 @@ All color options accept any valid CSS color value (hex, rgb, rgba, hsl, CSS var
 ### Example Configuration
 
 ```yaml
-type: custom:flightradar-flight-card
+type: custom:flight-card-pro
 entities:
   - entity_id: sensor.flightradar24_current_in_area
     title: Flights Nearby
@@ -164,7 +164,7 @@ The `template_airline_logo_url` option allows you to use a custom URL template f
 Example usage:
 
 ```yaml
-type: custom:flightradar-flight-card
+type: custom:flight-card-pro
 entities:
   - entity_id: sensor.flightradar24_current_in_area
 template_airline_logo_url: 'https://example.com/logos/{ICAO}.png'
@@ -179,7 +179,7 @@ With that new sensor, you can combine the `sensor.flightradar24_current_in_area`
 Yaml example:
 
 ```yaml
-type: custom:flightradar-flight-card
+type: custom:flight-card-pro
 entities:
   - entity_id: sensor.flightradar24_current_in_area
     title: Flights Nearby
@@ -205,7 +205,7 @@ If you have devices (like wall-mounted tablets) that don't have internet access 
 
 #### Setup
 
-1. Download the airline logos from this repository's [`public/flightaware_logos`](https://github.com/plckr/flightradar-flight-card/tree/main/public/flightaware_logos) folder
+1. Download the airline logos from this repository's [`public/flightaware_logos`](https://github.com/plckr/flight-card-pro/tree/main/public/flightaware_logos) folder
 2. Copy the logos to your Home Assistant `config/www/flightaware_logos/` folder
 3. Configure the card to use the local path by setting the `template_airline_logo_url`:
 
