@@ -10,7 +10,7 @@ import { resetStyles } from '../styles';
 import { HomeAssistant } from '../types/homeassistant';
 import { AreaCardOptions, FlightData } from './flight-area-card';
 
-@customElement('flight-carousel')
+@customElement('flight-card-pro-carousel')
 export class FlightCarousel extends LitElement {
   @property({ type: String })
   public cardTitle?: string;
@@ -160,7 +160,7 @@ export class FlightCarousel extends LitElement {
 
   protected render() {
     return html`
-      <flight-wrapper .cardTitle=${this.cardTitle}>
+      <flight-card-pro-wrapper .cardTitle=${this.cardTitle}>
         ${this._renderControls()}
 
         <div class="carousel">
@@ -169,18 +169,18 @@ export class FlightCarousel extends LitElement {
               this.flights,
               (flight) => flight.flightData.id,
               (flight) => html`
-                <flight-area-card
+                <flight-card-pro-area-card
                   .hass=${this.hass}
                   .flight=${flight.flightData}
                   .options=${flight.options}
                   class="slide"
                 >
-                </flight-area-card>
+                </flight-card-pro-area-card>
               `
             )}
           </div>
         </div>
-      </flight-wrapper>
+      </flight-card-pro-wrapper>
     `;
   }
 }

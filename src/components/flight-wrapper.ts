@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 
 import { resetStyles } from '../styles';
 
-@customElement('flight-wrapper')
+@customElement('flight-card-pro-wrapper')
 export class FlightWrapper extends LitElement {
   @property({ type: String })
   public cardTitle?: string;

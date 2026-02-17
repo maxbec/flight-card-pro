@@ -64,7 +64,7 @@ export type AreaCardOptions = {
   customAirlineLogoUrl?: string;
 };
 
-@customElement('flight-area-card')
+@customElement('flight-card-pro-area-card')
 export class FlightAreaCard extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant;
@@ -264,13 +264,13 @@ export class FlightAreaCard extends LitElement {
       this.flight.departureTime &&
       this.flight.arrivalTime &&
       this.flight.destinationCity
-        ? html` <flight-progress-bar
+        ? html` <flight-card-pro-progress-bar
             .hass=${this.hass}
             .departureTime=${this.flight.departureTime}
             .arrivalTime=${this.flight.arrivalTime}
             .destination=${this.flight.destinationCity}
             class="flight-progress"
-          ></flight-progress-bar>`
+          ></flight-card-pro-progress-bar>`
         : nothing}
     `;
   }
@@ -278,6 +278,6 @@ export class FlightAreaCard extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'flight-area-card': FlightAreaCard;
+    'flight-card-pro-area-card': FlightAreaCard;
   }
 }

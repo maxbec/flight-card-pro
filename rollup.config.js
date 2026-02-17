@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'node:child_process';
 
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
@@ -15,8 +16,9 @@ const dev = !!process.env.ROLLUP_WATCH;
 
 const outputFile = 'dist/flight-card-pro.js';
 
-const lastCommitHash = fs.readFileSync('.git/refs/heads/main', 'utf8').trim();
-const ghCommitRepositoryUrl = `https://raw.githubusercontent.com/plckr/flight-card-pro/${lastCommitHash}`;
+const lastCommitHash = getGitValue('git rev-parse HEAD') ?? 'main';
+const githubRepoPath = getGitHubRepoPath();
+const ghCommitRepositoryUrl = `https://raw.githubusercontent.com/${githubRepoPath}/${lastCommitHash}`;
 
 export default defineConfig(() => ({
   input: 'src/index.ts',
@@ -93,4 +95,25 @@ function outputBundleSize() {
       console.log(`\n📦 Bundle size: ${kb} KB`);
     },
   };
+}
+
+function getGitValue(cmd) {
+  try {
+    return execSync(cmd, { stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+  } catch {
+    return null;
+  }
+}
+
+function getGitHubRepoPath() {
+  const originUrl = getGitValue('git remote get-url origin');
+  if (!originUrl) return 'plckr/flight-card-pro';
+
+  const sshMatch = originUrl.match(/github\.com:(.+?)(?:\.git)?$/);
+  if (sshMatch?.[1]) return sshMatch[1];
+
+  const httpsMatch = originUrl.match(/github\.com\/(.+?)(?:\.git)?$/);
+  if (httpsMatch?.[1]) return httpsMatch[1];
+
+  return 'plckr/flight-card-pro';
 }

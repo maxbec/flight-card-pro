@@ -181,7 +181,7 @@ export class FlightCardPro extends LitElement {
 
     if (selectedEntity.flights.length > 1 && this._config.carousel.enable) {
       return html`
-        <flight-carousel
+        <flight-card-pro-carousel
           .cardTitle=${selectedEntity.title}
           .hass=${this.hass}
           .flights=${selectedEntity.flights}
@@ -191,19 +191,19 @@ export class FlightCardPro extends LitElement {
             autoplayDelay: this._config.carousel.autoplay_delay,
             showControls: this._config.carousel.show_controls,
           }}
-        ></flight-carousel>
+        ></flight-card-pro-carousel>
       `;
     }
 
     const selectedFlight = selectedEntity.flights[0];
 
-    return html`<flight-wrapper .cardTitle=${selectedEntity.title}>
-      <flight-area-card
+    return html`<flight-card-pro-wrapper .cardTitle=${selectedEntity.title}>
+      <flight-card-pro-area-card
         .hass=${this.hass}
         .flight=${selectedFlight.flightData}
         .options=${selectedFlight.options}
-      ></flight-area-card>
-    </flight-wrapper>`;
+      ></flight-card-pro-area-card>
+    </flight-card-pro-wrapper>`;
   }
 }
 

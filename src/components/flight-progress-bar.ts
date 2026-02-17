@@ -6,7 +6,7 @@ import { resetStyles } from '../styles';
 import { HomeAssistant } from '../types/homeassistant';
 import { formatTimeLeft, toSeconds } from '../utils/date';
 
-@customElement('flight-progress-bar')
+@customElement('flight-card-pro-progress-bar')
 export class FlightProgressBar extends LitElement {
   @property({ attribute: false })
   public hass!: HomeAssistant;
