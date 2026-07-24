@@ -1,6 +1,6 @@
 {
   "name": "flight-card-pro",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "A custom Home Assistant card for displaying flight information",
   "main": "dist/flight-card-pro.js",
   "type": "module",
