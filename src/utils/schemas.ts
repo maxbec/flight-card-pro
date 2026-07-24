@@ -82,7 +82,7 @@ export const areaFlightSchema = v.object({
   heading: fallbackNull(v.number()),
   ground_speed: fallbackNull(v.number()),
   squawk: v.string(),
-  vertical_speed: v.number(),
+  vertical_speed: fallbackNull(v.number()),
   distance: v.number(),
   closest_distance: v.optional(v.number()),
   on_ground: v.nullable(v.number()),
