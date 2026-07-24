@@ -36,10 +36,10 @@ export type FlightData = {
   /** Barometric pressure altitude above mean sea level (AMSL)
    * @unit feet
    */
-  altitude?: number;
+  altitude?: number | null;
   /** Speed relative to the ground
    * @unit knots */
-  groundSpeed?: number;
+  groundSpeed?: number | null;
   /** Whether the flight is currently in the air */
   isLive: boolean;
   /** Departure time in seconds */
@@ -143,7 +143,7 @@ export class FlightAreaCard extends LitElement {
           (v) => formatGroundSpeed(v, units.ground_speed),
         ],
         [t('distance'), this.flight.distance, (v) => formatDistance(v, units.distance)],
-      ] satisfies Array<[string, number | undefined, ((v: number) => number | string)?]>
+      ] satisfies Array<[string, number | null | undefined, ((v: number) => number | string)?]>
     ).flatMap(([label, value, formatter]) => {
       if (defined(value)) {
         return { label, value: formatter?.(value) ?? value };
@@ -165,7 +165,11 @@ export class FlightAreaCard extends LitElement {
       }
 
       if (value < 0) {
-        return { label, value: `${Math.abs(value)}m ${t('delay_early')}`, status: 'early' as const };
+        return {
+          label,
+          value: `${Math.abs(value)}m ${t('delay_early')}`,
+          status: 'early' as const,
+        };
       }
 
       return { label, value: `+${value}m`, status: 'late' as const };
